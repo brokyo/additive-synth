@@ -153,6 +153,7 @@ export default {
 
                 var nextLoopId = this.pickWeightedRandom(selectedLoop.next)
                 var nextLoop = this.parts[nextLoopId]
+                console.log(nextLoop)
 
                 if (nextLoop.id === 0) {
                     continueLoop = false
@@ -184,7 +185,7 @@ export default {
                     this.Tone.Transport.schedule(time => {
                         let eventTime = time + this.Tone.Time(event.time).toSeconds()
 
-                        this.synth.triggerAttackRelease(event.notes, event.duration, eventTime, event.velocity)
+                        this.synth.triggerAttackRelease(event.notes, event.duration, eventTime, Number(event.velocity))
 
                         this.Tone.Draw.schedule(() => {
                             this.parts[event.meta.partId].events[event.meta.index].meta.active = true

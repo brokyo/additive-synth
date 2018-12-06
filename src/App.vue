@@ -829,7 +829,7 @@ export default {
 
             this.synth.triggerAttack(note, undefined, toneVelocity)
 
-            if (this.recording) {
+            // if (this.recording) {
                 let timeSeconds = Date.now() / 1000
 
                 let event = {
@@ -842,8 +842,10 @@ export default {
                     active: true
                 }
 
-                this.newLoop.events.push(event)
-            }
+                console.log(event.note)
+
+                // this.newLoop.events.push(event)
+            // }
         },
         release(note) {
             this.synth.triggerRelease(note)
@@ -856,8 +858,9 @@ export default {
                 })
                 event.duration = Tone.Time(endTime - event.timeSeconds).toNotation()
                 event.active = false
+                console.log(event)
 
-                delete event.timeSeconds
+                // delete event.timeSeconds
             }
         },
         increasePartials() {
